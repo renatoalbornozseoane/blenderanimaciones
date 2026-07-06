@@ -1,0 +1,154 @@
+/* === RESET === */
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  font-family: 'Poppins', sans-serif;
+}
+
+/* === BASE === */
+body {
+  background: #0f0f13;
+  color: #f2f2f2;
+  overflow-x: hidden;
+  line-height: 1.6;
+  position: relative;
+}
+
+/* === FONDO ANIMADO === */
+.fondo-animado {
+  position: fixed;
+  inset: 0;
+  z-index: -1;
+  background: linear-gradient(-45deg, #ff7b00, #1a1a2e, #336deb, #0f0f13);
+  background-size: 400% 400%;
+  animation: gradienteMove 15s ease infinite;
+  opacity: 0.85;
+}
+
+@keyframes gradienteMove {
+  0%   { background-position: 0% 50%; }
+  50%  { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+/* === HEADER === */
+header {
+  text-align: center;
+  padding: 4rem 1rem 3rem;
+}
+
+.titulo {
+  font-size: 3rem;
+  font-weight: 700;
+  background: linear-gradient(90deg, #ff9a3c, #ffd580, #ff9a3c);
+  background-size: 200% auto;
+  -webkit-background-clip: text;
+  background-clip: text;             
+  -webkit-text-fill-color: transparent;
+  color: transparent;                 
+  animation: brillo 4s linear infinite, aparecer 1.2s ease-out;
+}
+
+@keyframes brillo {
+  to { background-position: 200% center; }
+}
+
+.subtitulo {
+  margin-top: 0.5rem;
+  font-size: 1.1rem;
+  color: #ccc;
+  opacity: 0;
+  animation: aparecer 1.5s ease-out 0.5s forwards;
+}
+
+/* Animación de entrada */
+@keyframes aparecer {
+  from { opacity: 0; transform: translateY(-20px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+/* === MAIN === */
+main {
+  max-width: 950px;
+  margin: 2rem auto;
+  padding: 0 1rem;
+}
+
+/* === VIDEO CARD === */
+.video-card {
+  background: rgba(28, 28, 38, 0.85);
+  backdrop-filter: blur(6px);
+  border: 1px solid rgba(255, 154, 60, 0.2);
+  padding: 1.8rem;
+  border-radius: 16px;
+  margin-bottom: 2.5rem;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.5);
+  transition: transform 0.4s ease, box-shadow 0.4s ease;
+  opacity: 0;
+  transform: translateY(30px);
+  animation: fadeInUp 1s ease-out forwards;
+}
+
+.video-card:hover {
+  transform: translateY(-6px) scale(1.01);
+  box-shadow: 0 12px 28px rgba(255, 154, 60, 0.25);
+}
+
+.video-card h2 {
+  color: #ff9a3c;
+  margin-bottom: 1rem;
+  font-size: 1.6rem;
+  position: relative;
+  display: inline-block;
+}
+
+.video-card h2::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: -4px;
+  height: 2px;
+  width: 0;
+  background: #ff9a3c;
+  transition: width 0.5s ease;
+}
+
+.video-card:hover h2::after {
+  width: 100%;
+}
+
+video {
+  width: 100%;
+  border-radius: 10px;
+  background: #000;
+  margin-bottom: 0.8rem;
+}
+
+.resalte {
+  color: #ffd580;
+  font-weight: 700;
+  text-shadow: 0 0 8px rgba(255, 213, 128, 0.6);
+}
+
+/* === ANIMACIONES DE ENTRADA === */
+@keyframes fadeInUp {
+  from { opacity: 0; transform: translateY(30px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+/* === FOOTER === */
+footer {
+  text-align: center;
+  padding: 1.5rem;
+  background: rgba(8, 8, 11, 0.9);
+  font-size: 0.9rem;
+  color: #aaa;
+  margin-top: 3rem;
+}
+
+/* === RESPONSIVE === */
+@media (max-width: 600px) {
+  .titulo { font-size: 2rem; }
+  .video-card { padding: 1.2rem; }
+}
